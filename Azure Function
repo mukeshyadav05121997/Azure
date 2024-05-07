@@ -1,0 +1,52 @@
+What is Azure Functions?
+Azure Functions is a serverless, event-driven compute service from Microsoft Azure that enables developers to quickly and easily deploy code to the cloud. 
+It allows developers to focus on writing their application logic without having to worry about server management or scalability.
+A trigger in Azure Functions is an event that causes a function to execute
+
+[FunctionName("MyFunction")] 
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log) 
+{ 
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}"); 
+}
+
+How do you set up routing in Azure Functions?
+Setting up routing in Azure Functions allows you to map a single function to multiple HTTP request paths. This allows you to trigger the same function from different routes, enabling you to handle different types of requests or use a single function for multiple purposes. To set up routing in Azure Functions, you'll need to update the Function.json file with the appropriate route information. For example, the following code snippet can be used to define two routes for a single Azure Function:
+    {
+      "bindings": [
+        {
+          "authLevel": "function",
+          "type": "httpTrigger",
+          "direction": "in",
+          "name": "req",
+          "methods": [
+            "get",
+            "post"
+          ],
+          "route": "myfunction/{action}"
+        }
+      ]
+    }
+The above code snippet defines a single function that can be triggered by two different routes: myfunction/get and myfunction/post. The function will be triggered when either route is called, allowing you to perform custom logic depending on the route that was called.
+
+How do you adjust log levels for Azure Functions?
+The log levels for Azure Functions can be adjusted in the host.json file. This file is located in the root directory of your function app and allows you to configure different log levels for different components. For example, you can use the following code snippet in the host.json file to set the log level for all components to Warning:
+    {
+      "logging": {
+        "logLevel": {
+          "default": "Warning" 
+        }
+      }
+    }
+Alternatively, you can specify different log levels for specific components, such as functions or triggers:
+    {
+      "logging": {
+        "logLevel": {
+          "default": "Information",
+          "Function": "Error",
+          "Host": "Warning" 
+        }
+      }
+    }
+By adjusting the log levels in the host.json file, you can ensure that only the most important messages are logged and that irrelevant information is filtered out.
+
+
