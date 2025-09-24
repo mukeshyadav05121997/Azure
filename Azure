@@ -1,1 +1,6 @@
-
+ * Microsoft Azure is Microsoft's cloud hosting platform, and it provides several services for deployment,development and hosting.
+ * It offers several services, including compute, storage, network and application services, and it
+  allows you to focus on building great solutions and not have to focus so much on procuring the infrastructure and maintaining hardware.
+* If we look at our data services, we'll see that we can store actual files in the form of blob storage.We have queue storage, file storage, database hosting and database hosting options such as Azure,
+  SQL Documentdb and even Redis cache.
+  Application services include Azure Active Directory for Application security and Open ID Connect Services.
